@@ -1,0 +1,65 @@
+<div *ngIf="loading" class="loading-screen-wrapper">
+    <div class="loading-screen-icon">
+        <img src="assets/imgs/spinner.svg">
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-4 content">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Datatable -->
+                    <div>
+                        <mat-form-field>
+                            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Buscar">
+                        </mat-form-field>
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    
+                            <!-- Nombre Column -->
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                            </ng-container>
+    
+                            <!-- Email Column -->
+                            <ng-container matColumnDef="email">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                            </ng-container>
+    
+                            <!-- valN Column -->
+                            <ng-container matColumnDef="valN">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor N </th>
+                                <td mat-cell *matCellDef="let element"> {{element.valN}} </td>
+                            </ng-container>
+    
+                            <!-- valM Column -->
+                            <ng-container matColumnDef="valM">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Valor M </th>
+                                <td mat-cell *matCellDef="let element"> {{element.valM}} </td>
+                            </ng-container>
+    
+                            <!-- Result Column -->
+                            <ng-container matColumnDef="result">
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header> Resultado </th>
+                                <td mat-cell *matCellDef="let element"> {{element.result}} </td>
+                            </ng-container>
+    
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                            </tr>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>
+                    <div *ngIf="alert" class="alert alert-warning">
+                        <strong>{{alertMsg}}</strong>
+                    </div>
+                    <div *ngIf="error" class="alert alert-danger">
+                        <strong>{{errorMsg}}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

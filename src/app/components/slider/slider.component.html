@@ -1,0 +1,25 @@
+
+<div *ngIf="loading" class="loading-screen-wrapper">
+        <div class="loading-screen-icon">
+            <img src="assets/imgs/spinner.svg">
+        </div>
+    </div>
+        <div *ngIf="error" class="alert alert-danger">
+            <strong>{{errorMsg}}</strong>
+        </div>
+
+<div class="mt-5" *ngIf="!loading">
+    <swiper [config]="config" >
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let img of imgs">
+                    <label>
+                            {{img.title}}
+                    </label>
+                    <img class="mt-4" src="{{img.thumbnailUrl}}" />
+            </div>
+        </div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </swiper>
+</div>
