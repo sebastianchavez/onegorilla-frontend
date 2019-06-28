@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/' // local
-  // apiUrl: 'http://localhost:3000/' // produccion
+  // apiUrl: 'http://localhost:3000/' // local
+  apiUrl: 'https://onegorilla-backend.herokuapp.com/' // produccion
 };
 
 /*
